@@ -13,15 +13,15 @@ from gui_HoverButton import HoverButton             # Unsere "HoverButton" Klass
 # Frame bedeutet übersetzt Rahmen. Daher kann man sich schon sehr gut herleiten wozu sie eingesetzt werden.
 # Frames bilden sogenannte "Container". Also klar definierte Bereiche innerhalb des Elements in welchem sie eingesetzt werden.
 # Das anschaulichste Beispiel, worin man ein Frame einsetzen kann, ist ein Fenster. Das machen wir mit unserer Sidebar.
-# Unsere "Sidebar" Klasse definiert also einen Rahmen in unserem Hauptfenster. Von dort aus ("gui_mainWindow") rufen wir sie dann auch (Zeile 3, gui_mainWindow).
+# Unsere "Sidebar" Klasse definiert also einen Rahmen in unserem Hauptfenster. Von dort aus ("gui_mainWindow") rufen wir sie dann auch (Zeile 37, gui_mainWindow).
 # Ein Frame muss aber nicht unbedingt in ein Fenster gepackt werden. Es ist z.B. auch möglich und üblich ein Frame innerhalb eines anderen Frames zu plazieren.
 # Dadurch kann man eine GUI strukturieren, also ein "Layout" erschaffen.
 
 # Eine erste Auffälligkeit befindet sich im Konstruktor. def __init__(self, parent)
 # Hier finden wir nicht nur das übliche "self" sonder auch noch "parent".
-# Das das "parent" attribut ist wichtig! An dieser Stelle wird festgehalten WER die Klasse gerufen hat. 
+# Das das "parent" Attribut ist wichtig! An dieser Stelle wird festgehalten WER die Klasse gerufen hat. 
 # Ein Frame kann nicht einfach so für sich alleine existieren, es MUSS immer irgendwo "reingepackt" werden.
-# In userem Fall ist das "parent" (deusch: Elternteil) unser Fenster (Window aus gui_mainWindow).
+# In userem Fall ist das "parent" (deutsch: Elternteil) unser Fenster (Window aus gui_mainWindow).
 # Alles was über das Fenster bekannt ist wird in "parent" gespeichert. Das ist sehr wichtig, denn somit haben wir auch von dem Frame aus, Zugriff auf alle Eigenschaften des Fensters 
 
 # Zudem besitzt unsere Sidebar Klasse auch noch eine weitere Funktion - "create_widgets()"
@@ -29,9 +29,9 @@ from gui_HoverButton import HoverButton             # Unsere "HoverButton" Klass
 
 class Sidebar(ttk.Frame):
     def __init__(self, parent):                                 # Wie oben beschrieben. Wir schaffen mit "parent" Platz für das Element welches unsere Klasse ruft
-        super().__init__(parent)                                # Alles was Objekt welches uns gerufen hat in seinem Konstruktor besitzt, "holen" wir uns auch hier her
+        super().__init__(parent)                                # Alles was das Objekt, welches uns gerufen hat in seinem Konstruktor besitzt, "holen" wir uns auch hier her
         self.place(x=0, y=0, relwidth=0.2, relheight=1)         # Hier wird angegeben WOHIN im Fenster das Frame plaziert werden soll. Genaueres dazu weiter unten innerhalb "create_widgets()"
-        self.create_widgets()                                   # Wenn "Sidebar" gerufen wird, sollen unser Frame auch gleich mit Inhalt gefüllt werden, dazu rufen wir die create_widgets() Methode
+        self.create_widgets()                                   # Wenn "Sidebar" gerufen wird, soll unser Frame auch gleich mit Inhalt gefüllt werden, dazu rufen wir die create_widgets() Methode
    
         
     def create_widgets(self):
@@ -59,8 +59,8 @@ class Sidebar(ttk.Frame):
         # Man hätte dazu auch direkt den background des Frames ändern könnnen, ich wollte aber Zeigen wozu Labels verwendet werden können
         self.background_label = ttk.Label(self,background="#232121") # Ein Label und die dazugehörige Variable erstellen | self = Wem gehört das Label? Dem Frame! (self) | background setzt die Farbe des Labels
         self.background_label.pack(expand= True, fill="both") # Da das Label den Hintergurnd für das gesamte Frame darstellen soll, können wir es einfach mit .pack plazieren
-                                                              # Standardmäßig sind Labels immer so groß wie sie ein müssen um ihren Inhalt darzustellen. Unser Label hat aber garkeinen Inhalt!
-                                                              # Deshalb sagen wir ihm mit "expand=True" das es den GESAMTEN Paltz einnehmen soll der da ist. Und zwar in BEIDE Richtungen, auf der y- und x-Achse
+                                                              # Standardmäßig sind Labels immer so groß wie sie sein müssen um ihren Inhalt darzustellen. Unser Label hat aber garkeinen Inhalt!
+                                                              # Deshalb sagen wir ihm mit "expand=True" das es den GESAMTEN Paltz einnehmen soll der da ist. Und zwar in BEIDE Richtungen, auf der y- und x-Achse (fill="both")
         
         # Buttons definieren und plazieren
         self.sidebar_btn1 = HoverButton(self, text="Benutzer verwalten", bg="#232121", fg="white", relief="flat", font="Verdana", activebackground="#232121", borderwidth="0", activeforeground="#df4807",autostyle=False)
@@ -75,7 +75,7 @@ class Sidebar(ttk.Frame):
         self.sidebar_btn4.place(relx=0.1, rely=0.45, width=200, height=50)
         self.sidebar_btn5.place(relx=0.1, rely=0.55, width=200, height=50)
         
-        # Seperatoren definieren und plazieren
+        # Separatoren definieren und plazieren
         self.side_separator1 = ttk.Separator(self, orient='horizontal')
         self.side_separator1.place(relx=0.1, rely=0.3, relwidth=0.8, relheight=0.001)
         

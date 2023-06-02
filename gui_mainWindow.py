@@ -33,15 +33,18 @@ class Window(ctk.CTk):                                         # Wir defineiren 
         # Bisher gibt es die "Sidebar" welche das Menü auf der linken Seite des Fensters baut
         # Und die "manage_books" Seite. Sie wird im Moment als "Standart-Seite" beim starten des Programms geöffnet
         # Später wird man beim ersten öffnen des Fensters auf eine Willkommens-Seite geleitet und kann dann anhand des Menüs auswählen wohin man will
+        
         self.sidebar = Sidebar(self)
         self.manage_books = ManageBooks(self)
-        ##############################################################################################################################################
+        
+       
         # Styling
         # In diesem Block werden Styling-Optionen für alle Elemente festgelegt welche im Prgramm mit ttk erstellt werden.
         # Während man im Standard-tkinter modul (tk) den Style eines Elements direkt an dem Element selbst festlegt (Und man es somit auch für jedes Element selbst machen muss)
         # verfolgt ttk hier eher das Prinzip wie css im Webdesign. Jede Klasse welche ein ttk-Element baut (Frames, Buttons, Labels, etc...) besitzt ein Attribut names "style"
         # dieses kann von "ttk.Style" angesprochen werden und seine Werte daraus entgegenehmen. 
         # Somit können wir z.B ALLEN Buttons einen bestimmten Style zuweißen.
+        
         style = ttk.Style(self)                                                                                     # Ein "Style-Objekt" erstellen
         ttkthemes.themed_style.ThemedStyle(theme="black")                                                           # Wir holen uns aus "ttkthemes" den vordefinierten Style "dark"
         style.theme_use("black")                                                                                    # Den "black" Style anwenden
