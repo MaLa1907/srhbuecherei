@@ -27,6 +27,7 @@ class Window(ctk.CTk):                                         # Wir defineiren 
         self.title("SRH Bücherei")                             # Titel Fensters festlegen (Text der in der Windows-Titelleiste angezeigt wird)
         self.configure(fg_color="#191717")                     # Hiermit bestimmen wir die Hintergrundfarbe des Fensters. "#191717" ist ein HEX-Wert, man könnte aber auch Werte wie "black" oder RGB-Werte übergeben
         ctk.set_appearance_mode("dark")                        # Diese Zeile sorgt dafür, dass bestimmte Elemente wie z.B. die Titelleiste einen dunklen Stil bekommen
+        self.iconbitmap("img/srhico.ico")
        
         
         
