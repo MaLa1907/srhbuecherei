@@ -3,9 +3,11 @@ import tkinter as tk                              # Das Standard tkintermodul. W
 from tkinter import ttk as ttk                    # Erweiterung für das tkinter Modul. Ermöglicht erweiterte Styling-Möglichkeiten für tkinter-Elemente
 import customtkinter as ctk                       # Noch eine Erweiterung für tkinter. Sehr Umfangreiche Styling Möglichkeiten  
 import ttkthemes                                  # Bibliothek für ttk welche schon voreingestellte "Themes" beinhaltet
+
 # import von internen Modulen (unsere Dateien)
 from gui_Sidebar import Sidebar                   # Unsere "Sidebar" Klasse. (Das Menü)
 from gui_manageBooks import ManageBooks           # Unsere "ManageBooks" Klasse. (Bücher verwalten, im Menü)
+from gui_Welcome import Welcome
 
 
 # Die Klasse "Window" enthält alle grundlegenden Eigenschaften unseres Fensters. Sie dient dazu das Hauptfenster zu erstellen.
@@ -25,6 +27,8 @@ class Window(ctk.CTk):                                         # Wir defineiren 
         self.title("SRH Bücherei")                             # Titel Fensters festlegen (Text der in der Windows-Titelleiste angezeigt wird)
         self.configure(fg_color="#191717")                     # Hiermit bestimmen wir die Hintergrundfarbe des Fensters. "#191717" ist ein HEX-Wert, man könnte aber auch Werte wie "black" oder RGB-Werte übergeben
         ctk.set_appearance_mode("dark")                        # Diese Zeile sorgt dafür, dass bestimmte Elemente wie z.B. die Titelleiste einen dunklen Stil bekommen
+       
+        
         
         
         # Elemente
@@ -35,8 +39,9 @@ class Window(ctk.CTk):                                         # Wir defineiren 
         # Später wird man beim ersten öffnen des Fensters auf eine Willkommens-Seite geleitet und kann dann anhand des Menüs auswählen wohin man will
         
         self.sidebar = Sidebar(self)
-        self.manage_books = ManageBooks(self)
-        
+        self.welcomePage = Welcome(self)
+        #self.manage_books = ManageBooks(self)
+    
        
         # Styling
         # In diesem Block werden Styling-Optionen für alle Elemente festgelegt welche im Prgramm mit ttk erstellt werden.
@@ -45,16 +50,10 @@ class Window(ctk.CTk):                                         # Wir defineiren 
         # dieses kann von "ttk.Style" angesprochen werden und seine Werte daraus entgegenehmen. 
         # Somit können wir z.B ALLEN Buttons einen bestimmten Style zuweißen.
         
-        style = ttk.Style(self)                                                                                     # Ein "Style-Objekt" erstellen
-        ttkthemes.themed_style.ThemedStyle(theme="black")                                                           # Wir holen uns aus "ttkthemes" den vordefinierten Style "dark"
-        style.theme_use("black")                                                                                    # Den "black" Style anwenden
-        style.configure("Treeview", background="#191717", fieldbackground="#191717", foreground="white")            # In den nächsten 3 Zeilen werden nun einzelne Werte für die Tabelle (Treeview) gesetzt.
-        style.configure('Treeview.Heading', background="#212121", foreground="white", borderwidth=0, font="bold")   # Auf diese Art können wir Einstellungen welche aus dem "black" Theme kommen, überschreiben
-        style.map('Treeview', background=[('selected', '#df4807')], foreground=[("selected", "white")])             # Wir ändern z.B. die Hintergurndfarbe einer Tabelle (background), den Hintergrund der
-                                                                                                                    # Spaltenüberschriften (Treeview.Heading background) oder die Farbe des aktuell ausgewählten
-                                                                                                                    # Eintrags (selected)    
+        
         
         # Das Fenster öffnen
         # "mainloop()" sorgt dafür, dass das Fenster nicht nur einmal geöffnet wird und sofort wieder verschwindet (Das python-script würde einmal durchlaufen und sich dann beenden)
         # "mainloop()" ist somit eine Schleife, die solange weiterläuft, bis wir sie beenden (Fenster schließen)
         self.mainloop()
+                                                                                                                  
