@@ -75,6 +75,7 @@ class Sidebar(ttk.Frame):
         # Buttons definieren
         # Unsere Buttons werden durch die von uns erschaffene Klasse "Hoverbutton" definiert. Eine ausführliche Erklärung findet sich in gui_HoverButton.py
         # Die Paramenter "self" und "text" sollten selbsterklärend sein, "activeforeground" setzt hier die Farbe der Beschriftung des Buttons, wenn man die Maus über ihn plaziert.
+        
         self.sidebar_btn1 = HoverButton(self, text="Benutzer verwalten", bg="#141414", activeforeground="#df4807", command=lambda: ManageUsers(self.master))
         self.sidebar_btn2 = HoverButton(self, text="Bücher verwalten", bg="#141414", activeforeground="#df4807", command=lambda: ManageBooks(self.master))
         self.sidebar_btn3 = HoverButton(self, text="Leihgaben", bg="#141414", activeforeground="#df4807", command=lambda: LendBooks(self.master))
